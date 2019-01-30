@@ -2,16 +2,16 @@
 const Net = require('net');
 const port = 3232;
 
+var sock = null;
 const server = new Net.Server();
 server.listen(port, function() {
     console.log('Server listening for connection requests on socket localhost: ' + port);
 });
 
 server.on('connection', function(socket) {
-	// socket.setKeepAlive(true,60000); //1 min = 60000 milliseconds.
+    sock = socket;
     console.log('A new connection has been established');
     socket.on('data', function(chunk) {
-        // console.log('Data received from client: ' + chunk.toString());
         var str = chunk.toString();
         var tagged_addrress = str.match(/<h:addr\b[^>]*>(.*?)<\/h:addr>/gm);
         if(tagged_addrress){
@@ -28,7 +28,6 @@ server.on('connection', function(socket) {
         } else{
         	console.log("Invalid Incoming Data");
         }
-        // socket.end();
     });
 
     socket.on('end', function() {
@@ -39,3 +38,12 @@ server.on('connection', function(socket) {
         console.log(`Error: ${err}`);
     });
 });
+
+// setInterval(function(){
+//     if(sock){
+//         console.log("Sending Shit");
+//         sock.write("<h:rt>BITCH</h:rt>");
+//     } else{
+//         console.log("NULL Sock");
+//     }
+// }, 3000);
