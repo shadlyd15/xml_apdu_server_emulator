@@ -1,0 +1,12 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "nan": {
+      "integrity": "sha1-7XFfP+neArV6XmJS2QqWZ14fCFo=",
+      "resolved": "https://registry.npmjs.org/nan/-/nan-2.8.0.tgz",
+      "version": "2.8.0"
+    },
+    "node-aes-gcm": "^0.2.4"
+  }
+}
