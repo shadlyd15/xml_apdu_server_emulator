@@ -70,4 +70,4 @@ setInterval(function(){
             console.log("Sending Plain Text APDU : " + plaintext + "\r\n");            
         }
     }
-}, 12345);
+}, 4000);
